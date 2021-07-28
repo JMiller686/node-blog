@@ -1,14 +1,16 @@
 const express = require('express');
+const dotenv = require('dotenv');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const Blog = require('./models/blog');
 
 
 //express app
+dotenv.config();
 const app = express();
 
 //connect to mongo db
-const dbURI = 'mongodb+srv://mnmdev:WCgenVvx4w1cMifo@nodeblog.caikp.mongodb.net/mnmBlog?retryWrites=true&w=majority';
+const dbURI = `mongodb+srv://mnmdev:${process.env.MONGO_PASSWORD}@nodeblog.caikp.mongodb.net/mnmBlog?retryWrites=true&w=majority`;
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true})
 .then((result) => app.listen(3000))
 .catch((err) => console.log(err));
