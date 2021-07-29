@@ -9,10 +9,10 @@
         <h2>All Blogs</h2>
         <% if(blogs.length > 0) { %>
             <% blogs.forEach(blog => { %>   
-                <div class='blog-preview'>
+                <a href="/blogs/<%= blog._id %>" class='blog-preview'>
                     <h3 class='title'><%= blog.title %></h3> 
                     <p class='snippet'><%= blog.snippet %></p>
-                </div>
+                </a>
             <% }) %>
         <% } else { %>
             <p>No blogs to display</p>
